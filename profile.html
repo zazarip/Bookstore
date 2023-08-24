@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset = "UTF-8">
+		<title> Profile </title>
+	</head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+img {
+  border-radius: 50%;
+}
+body {background-color: #FF9999;}
+h1{ text-align: center;
+	 font-family: monospace;
+	 font-size: 46px;}
+fieldset{ margin:auto;}
+p {text-align: center;}
+fieldset{text-align: center;}
+
+</style>
+</head>
+	
+	<h1> User Profile Page </h1>
+	<body> 
+
+	<p><p class="center"><img height=250 width=500 src="image/Saeho.png" alt="Avatar"></p>
+	
+	<fieldset>
+	<legend> ACCOUNT DETAILS </legend>
+		<label for = "user" > USERNAME: </label>&emsp;
+		<input type = "text" id = "user" name = "user" size = 50><br>
+		
+		<label for = "id" > ID: </label>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+		<input type = "text" id = "id" name = "id" size = 50><br>
+		
+		<label for ="email" > EMAIL: </label>&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type = "text" id = "email" name = "email" size = 50><br>
+	</fieldset>
+	
+	<input type = "submit" value = "Delete Account" id = "del_acc" name = "del_acc" onclick = "displayRec()">&emsp;&nbsp;
+	</body>
+</html>
