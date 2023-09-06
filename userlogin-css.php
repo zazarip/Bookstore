@@ -53,24 +53,33 @@
 <?php
 session_start();
 
-$message="";
-if(count($_POST)>0){
+$message = "";
+
+if (count($_POST) > 0) {
   include 'conn.php';
 
-  $result = mysqli_query($conn, "SELECT * FROM customer WHERE Cust_email='". $_POST["Cust_email"]. 
-  " ' and Cust_pass= '". $_POST["Cust_pass"]."'");
-  $row= mysqli_fetch_array($result);
-  if(is_array($row)){
-    $_SESSION["Cust_id"]= $row['Cust_id'];
-    $_SESSION["Cust_username"]= $row['Cust_username'];
-  }else{
-    $message= "Invalid Email or Password!";
-  }
+  $email = $_POST["Cust_email"];
+  $password = $_POST["Cust_pass"];
+
+  $result = mysqli_query($conn, "SELECT * FROM customer WHERE Cust_email='" . $email . "' and Cust_pass='" . $password . "'");
   
+  if ($result) {
+    // Check if any rows were returned
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_array($result);
+      $_SESSION["Cust_username"] = $row['Cust_username'];
+      header("Location: homepage-css.php");
+      exit(); // Ensure that no further code is executed after redirection
+    } else {
+      $message = "Invalid Email or Password!";
+    }
+  } else {
+    $message = "Error executing the SQL query: " . mysqli_error($conn);
+  }
 }
-if(isset($_SESSION["Cust_email"]) && isset($_SESSION["Cust_username"])){
-  header("Location: homepage-css.php");
-}
+
+// Rest of your HTML code
+
 ?>
 	<body style="text-align:center">
 	<div class="container">
